@@ -350,6 +350,13 @@ typedef struct PntosStandardFusionEngine {
 	 * will also be cloned.
 	 */
 	struct PntosStandardFusionEngine* (*clone)(struct PntosStandardFusionEngine* self);
+
+	/**
+	 * @return The joint state transition matrix assembled for the propagation which ended at \p time.
+	 * Returns NULL if this engine does not retain one for that time.
+	 */
+	PntosMatrix* PNTOS_NULLABLE (*get_retained_transition)(struct PntosStandardFusionEngine* self,
+	                                                       AspnTypeTimestamp time);
 } PntosStandardFusionEngine;
 
 /**
